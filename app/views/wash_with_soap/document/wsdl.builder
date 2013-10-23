@@ -32,7 +32,11 @@ xml.definitions 'xmlns' => 'http://schemas.xmlsoap.org/wsdl/',
     xml.tag! "soap:binding", :style => 'document', :transport => 'http://schemas.xmlsoap.org/soap/http'
     @map.keys.each do |operation|
       xml.operation :name => operation do
-        xml.tag! "soap:operation", :soapAction => operation
+        if operation == "PollProvisionItem"
+      	  xml.tag! "soap:operation", :soapAction => "http://store.clareitystore.com/PollProvision"
+      	else
+ 					xml.tag! "soap:operation", :soapAction => "http://store.clareitystore.com/" + operation	     	
+      	end  
         xml.input do
           xml.tag! "soap:body",
             :use => "literal",
