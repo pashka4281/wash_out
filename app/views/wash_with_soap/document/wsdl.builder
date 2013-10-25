@@ -37,6 +37,9 @@ xml.definitions 'xmlns' => 'http://schemas.xmlsoap.org/wsdl/',
       	else
  					xml.tag! "soap:operation", :soapAction => "http://store.clareitystore.com/" + operation	     	
       	end  
+      	
+      	xml.tag! "soap:operation", :soapAction => operation
+      	
         xml.input do
           xml.tag! "soap:body",
             :use => "literal",
