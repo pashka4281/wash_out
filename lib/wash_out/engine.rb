@@ -8,6 +8,7 @@ module WashOut
       attr_accessor :snakecase_input, :camelize_wsdl
       attr_accessor :wsse_username, :wsse_password
       attr_accessor :catch_xml_errors
+      attr_accessor :skip_wrapping_params_in_action_name
     end
 
     self.parser    = :rexml

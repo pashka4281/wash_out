@@ -22,11 +22,9 @@ module WashOut
 
         env['wash_out.soap_action'] = soap_action
       end
-      puts soap_action
       
       action_spec = controller.soap_actions[soap_action]
       
-      puts action_spec
       if action_spec
         action = action_spec[:to]
       else

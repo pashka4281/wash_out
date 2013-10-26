@@ -49,9 +49,11 @@ module WashOut
 
       xml_data = @_params.values_at(:envelope, :Envelope).compact.first
       xml_data = xml_data.values_at(:body, :Body).compact.first
-      xml_data = xml_data.values_at(soap_action.underscore.to_sym,
-                                    soap_action.to_sym).compact.first || {}
 
+      unless WashOut::Engine.skip_wrapping_params_in_action_name
+        xml_data = xml_data.values_at(soap_action.underscore.to_sym,
+                                      soap_action.to_sym).compact.first || {}
+      end
       strip_empty_nodes = lambda{|hash|
         hash.keys.each do |key|
           if hash[key].is_a? Hash
